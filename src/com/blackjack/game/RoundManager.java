@@ -89,7 +89,12 @@ public class RoundManager {
         }
         if (blackjackResult) return;
 
-        playerTurn();
+        //  player turn; if they exit, stop immediately:
+        boolean playerExited = playerTurn();
+        if (playerExited) {
+            // we could also reset any partial bets or state here if desired
+            return;
+        }
 
         boolean allPlayerHandsBusted = player.getHands().stream().allMatch(rules::isBust);
 
@@ -124,7 +129,7 @@ public class RoundManager {
 
     }
 
-    public void playerTurn(){
+    public boolean playerTurn(){
 
         List<Hand> playerHands = player.getHands();
         int handIndex = 0;
@@ -154,7 +159,7 @@ public class RoundManager {
                 Move move = ui.getPlayerMove(canDouble, canSplit, canSurrender);
                 if (move == Move.EXIT) {
                     ui.displayMessage("Exiting round early...");
-                    return;
+                    return true;
                 }
 
                 switch (move) {
@@ -252,6 +257,8 @@ public class RoundManager {
             }
             handIndex++;
         }
+
+        return false;
     }
     public void dealerTurn(){
         Hand dealerHand = dealer.getHand();

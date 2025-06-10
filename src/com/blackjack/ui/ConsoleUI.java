@@ -45,7 +45,7 @@ public class ConsoleUI implements GameUI{
     @Override
     public boolean askYesNo(String prompt) {
         while (true) {
-            System.out.print(prompt + " (Y/N)");
+            System.out.print(prompt + " (Y/N): ");
             String input = scanner.nextLine().trim().toLowerCase();
 
             if (input.equals("y") || input.equals("yes")) {
