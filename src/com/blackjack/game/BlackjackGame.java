@@ -50,16 +50,6 @@ public class BlackjackGame {
             shoe = new Shoe(deckChoice);
             shoe.shuffle();
 
-            shoe.prependCard(new Card(Card.Rank.EIGHT, Card.Suit.DIAMONDS)); // re-split 2nd card
-            shoe.prependCard(new Card(Card.Rank.EIGHT, Card.Suit.HEARTS));   // re-split 1st card
-
-
-            shoe.prependCard(new Card(Card.Rank.KING,  Card.Suit.HEARTS));   // dealer up-card
-            shoe.prependCard(new Card(Card.Rank.EIGHT, Card.Suit.HEARTS));   // player 2nd card
-            shoe.prependCard(new Card(Card.Rank.FIVE,  Card.Suit.CLUBS));    // dealer hole-card
-            shoe.prependCard(new Card(Card.Rank.EIGHT, Card.Suit.SPADES));   // player 1st card
-
-
             ui.displayMessage(String.format("You chose %d deck type shoe to play!", deckChoice));
 
             playUntilPlayerQuitsOrReshuffles();
