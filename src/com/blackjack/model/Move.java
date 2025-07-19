@@ -1,8 +1,17 @@
 package com.blackjack.model;
 
+/**
+ * Enum representing possible player moves in Blackjack.
+ */
 public enum Move {
     HIT, STAY, DOUBLE, SPLIT, SURRENDER, EXIT;
 
+    /**
+     * Parses a string input into a Move.
+     * @param input the user input
+     * @return the corresponding Move
+     * @throws IllegalArgumentException if input is invalid
+     */
     public static Move fromString(String input) {
         return switch (input.toLowerCase()) {
             case "hit", "h" -> HIT;

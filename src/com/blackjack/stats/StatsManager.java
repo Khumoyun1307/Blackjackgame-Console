@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.*;
 
+/**
+ * Manages saving and loading player statistics to disk.
+ */
 public class StatsManager {
 
     private static final String STATS_DIR = "stats";
@@ -14,6 +17,11 @@ public class StatsManager {
         if (!dir.exists()) dir.mkdirs();
     }
 
+    /**
+     * Saves the stats for a user.
+     * @param username the username
+     * @param stats the GameStats object
+     */
     public static void saveStats(String username, GameStats stats) {
         File file = new File(STATS_DIR, username + "_stats.json");
 
@@ -24,6 +32,11 @@ public class StatsManager {
         }
     }
 
+    /**
+     * Loads the stats for a user.
+     * @param username the username
+     * @return the loaded GameStats
+     */
     public static GameStats loadStats(String username) {
         File file = new File(STATS_DIR, username + "_stats.json");
 
@@ -44,6 +57,10 @@ public class StatsManager {
         }
     }
 
+    /**
+     * Deletes the stats for a user.
+     * @param username the username
+     */
     public static void deleteStats(String username) {
         File file = new File(STATS_DIR, username + "_stats.json");
         if (file.exists()) file.delete();

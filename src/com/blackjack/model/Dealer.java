@@ -1,5 +1,9 @@
 package com.blackjack.model;
 
+/**
+ * Represents the dealer in Blackjack.
+ * Dealer always has infinite balance and one hand.
+ */
 public class Dealer extends Player{
 
     public Dealer() {
@@ -7,15 +11,26 @@ public class Dealer extends Player{
         addHand(new Hand()); // // Start with one empty hand
     }
 
+    /**
+     * Gets the dealer's current hand.
+     * @return the dealer's hand
+     */
     public Hand getHand() {
         return getHands().get(0); // Dealer only has one hand
     }
 
+    /**
+     * Prepares the dealer for a new round.
+     */
     public void newRound() {
         resetHands(); // clears hand list
         addHand(new Hand());
     }
 
+    /**
+     * Determines if the dealer should hit.
+     * @return true if dealer should hit
+     */
     public boolean shouldHit() {
         int value = getHand().getValue();
         return value < 17;

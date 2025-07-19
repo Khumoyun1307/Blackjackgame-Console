@@ -1,9 +1,9 @@
 {
-  "wins": 4,
-  "losses": 6,
+  "wins": 5,
+  "losses": 10,
   "pushes": 1,
-  "totalBet": 630.0,
-  "netProfit": -160.0,
+  "totalBet": 1380.0,
+  "netProfit": -610.0,
   "history": [
     {
       "timestamp": "2025-06-09T05:35:20.264512",
@@ -103,6 +103,51 @@
       "result": "Lose",
       "playerValue": 16,
       "dealerValue": 21
+    },
+    {
+      "timestamp": "2025-07-18T14:31:16.244551700",
+      "handNumber": 1,
+      "bet": 150.0,
+      "payout": 0.0,
+      "result": "Lose",
+      "playerValue": 16,
+      "dealerValue": 17
+    },
+    {
+      "timestamp": "2025-07-18T14:31:16.254699100",
+      "handNumber": 2,
+      "bet": 150.0,
+      "payout": 300.0,
+      "result": "Win",
+      "playerValue": 18,
+      "dealerValue": 17
+    },
+    {
+      "timestamp": "2025-07-18T14:31:16.254699100",
+      "handNumber": 3,
+      "bet": 150.0,
+      "payout": 0.0,
+      "result": "Lose",
+      "playerValue": 15,
+      "dealerValue": 17
+    },
+    {
+      "timestamp": "2025-07-18T14:31:16.254699100",
+      "handNumber": 4,
+      "bet": 150.0,
+      "payout": 0.0,
+      "result": "Lose",
+      "playerValue": 13,
+      "dealerValue": 17
+    },
+    {
+      "timestamp": "2025-07-18T14:31:16.264592500",
+      "handNumber": 5,
+      "bet": 150.0,
+      "payout": 0.0,
+      "result": "Lose",
+      "playerValue": 16,
+      "dealerValue": 17
     }
   ]
 }

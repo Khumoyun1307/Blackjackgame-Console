@@ -27,3 +27,15 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# User data and generated files
+users/
+stats/
+history/
+
+# Logs
+*.log
+
+# Java build output
+*.class
+*.jar

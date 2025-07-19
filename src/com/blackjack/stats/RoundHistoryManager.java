@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Manages saving and loading round history for players.
+ */
 public class RoundHistoryManager {
 
     private static final String HISTORY_DIR = "history";
@@ -13,6 +16,11 @@ public class RoundHistoryManager {
         if (!dir.exists()) dir.mkdirs();
     }
 
+    /**
+     * Saves a round summary for a user.
+     * @param username the username
+     * @param summary the round summary string
+     */
     public static void saveRound(String username, String summary) {
         File file = new File(HISTORY_DIR, username + "_rounds.txt");
 
@@ -24,6 +32,11 @@ public class RoundHistoryManager {
         }
     }
 
+    /**
+     * Loads the round history for a user.
+     * @param username the username
+     * @return list of round summaries
+     */
     public static List<String> loadHistory(String username) {
         List<String> history = new ArrayList<>();
         File file = new File(HISTORY_DIR, username + "_rounds.txt");
@@ -42,6 +55,10 @@ public class RoundHistoryManager {
         return history;
     }
 
+    /**
+     * Clears the round history for a user.
+     * @param username the username
+     */
     public static void clearHistory(String username) {
         File file = new File(HISTORY_DIR, username + "_rounds.txt");
         if (file.exists()) file.delete();

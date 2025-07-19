@@ -6,12 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Manages user registration, login, and profile persistence.
+ */
 public class UserManager {
 
     private static final String USERS_FILE = "users.txt";
     private final Map<String, PlayerProfile> profiles = new HashMap<>();
     private static final String USERS_DIR = "users";
     private static final String BACKUP_DIR = "backup";
+
     public UserManager() {
         File dir = new File(USERS_DIR);
         if (!dir.exists()) dir.mkdirs();
@@ -19,6 +23,11 @@ public class UserManager {
         loadProfiles();
     }
 
+    /**
+     * Checks if a username already exists.
+     * @param username the username
+     * @return true if exists
+     */
     public boolean usernameExists(String username) {
         return profiles.containsKey(username);
     }
@@ -40,6 +49,12 @@ public class UserManager {
         }
     }
 
+    /**
+     * Registers a new user.
+     * @param username the username
+     * @param password the password
+     * @return the created PlayerProfile, or null if username exists
+     */
     public PlayerProfile register(String username, String password) {
         if (profiles.containsKey(username)) return null;
 
@@ -50,6 +65,12 @@ public class UserManager {
         return profile;
     }
 
+    /**
+     * Attempts to log in a user.
+     * @param username the username
+     * @param password the password
+     * @return the PlayerProfile if successful, null otherwise
+     */
     public PlayerProfile login(String username, String password) {
         PlayerProfile profile = profiles.get(username);
         String hashedInput = hashPassword(password);
@@ -60,6 +81,9 @@ public class UserManager {
         return null;
     }
 
+    /**
+     * Saves all user profiles to disk.
+     */
     public void saveProfiles() {
         for (PlayerProfile profile : profiles.values()) {
             saveProfile(profile); // delegate to per-user save
@@ -88,6 +112,10 @@ public class UserManager {
         }
     }
 
+    /**
+     * Saves a single user profile to disk.
+     * @param profile the profile to save
+     */
     public void saveProfile(PlayerProfile profile) {
         // backupUserDirectory();
         File file = new File(USERS_DIR, profile.getUsername() + ".txt");
@@ -137,6 +165,11 @@ public class UserManager {
         }
     }
 
+    /**
+     * Gets a BlackjackProfile for the given username.
+     * @param username the username
+     * @return the BlackjackProfile, or null if not found
+     */
     public BlackjackProfile getBlackjackProfile(String username) {
         PlayerProfile base = profiles.get(username);
         if (base == null) return null;

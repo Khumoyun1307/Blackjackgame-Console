@@ -3,27 +3,45 @@ package com.blackjack.ui;
 import com.blackjack.model.*;
 import com.blackjack.stats.GameStats;
 import com.blackjack.stats.RoundSummary;
-
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Console-based implementation of the GameUI interface for user interaction.
+ */
 public class ConsoleUI implements GameUI{
 
     private final Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Displays a message to the user.
+     * @param message the message to display
+     */
     @Override
     public void displayMessage(String message) {
         System.out.println(message);
     }
 
+    /**
+     * Displays a message without a newline.
+     * @param message the message to display
+     */
     public void displayMessageWithoutLn(String message){
         System.out.print(message);
     }
 
+    /**
+     * Displays the player's balance.
+     * @param balance the balance to display
+     */
     public void displayBalance(double balance) {
         System.out.printf("💰 Current Balance: $%.2f%n", balance);
     }
 
+    /**
+     * Prompts the user to choose the deck size.
+     * @return the deck size (2 or 6)
+     */
     @Override
     public int promptDeckChoice() {
         while (true) {
@@ -42,6 +60,11 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Asks the user a yes/no question.
+     * @param prompt the question
+     * @return true for yes, false for no
+     */
     @Override
     public boolean askYesNo(String prompt) {
         while (true) {
@@ -58,6 +81,10 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Prompts the user for a menu choice.
+     * @return the menu choice
+     */
     @Override
     public int promptMenuChoice() {
         System.out.print("Enter your choice: ");
@@ -68,6 +95,11 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Asks the user for an insurance bet.
+     * @param maxInsurance the maximum allowed insurance
+     * @return the insurance bet
+     */
     @Override
     public double askInsuranceBet(double maxInsurance) {
         boolean wantsInsurance = askYesNo(
@@ -88,6 +120,12 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Prompts the user for a bet amount.
+     * @param minBet the minimum bet
+     * @param maxBet the maximum bet
+     * @return the bet amount
+     */
     @Override
     public double getBet(double minBet, double maxBet) {
 
@@ -109,6 +147,13 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Prompts the user for a move.
+     * @param canDouble whether double is allowed
+     * @param canSplit whether split is allowed
+     * @param canSurrender whether surrender is allowed
+     * @return the chosen move
+     */
     @Override
 //    public Move getPlayerMove(boolean canDouble, boolean canSplit) {
 //        System.out.print("\nChoose your move [hit / stay");
@@ -138,15 +183,27 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Reads a line from the user.
+     * @return the input line
+     */
     public String readLine() {
         return scanner.nextLine().trim();
     }
 
+    /**
+     * Shows a hand's cards and value.
+     * @param hand the hand to show
+     */
     public void showHand(Hand hand) {
         System.out.printf("(value: %s)%n", hand.getDisplayValue());
         System.out.print(formatAsciiCards(hand.getCards()));
     }
 
+    /**
+     * Shows all player hands.
+     * @param player the player
+     */
     @Override
     public void showPlayerHand(Player player) {
         System.out.println("\nYour hand(s):");
@@ -202,6 +259,10 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Shows the game statistics.
+     * @param stats the game stats
+     */
     @Override
     public void showStats(GameStats stats) {
         System.out.println("\n📈 === Blackjack Game Stats ===");
@@ -230,6 +291,10 @@ public class ConsoleUI implements GameUI{
         }
     }
 
+    /**
+     * Shows the outcome of a round.
+     * @param result the result string
+     */
     @Override
     public void showOutcome(String result) {
         System.out.println("\n=== Round Result ===");

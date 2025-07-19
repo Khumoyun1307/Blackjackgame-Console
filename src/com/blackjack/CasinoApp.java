@@ -1,16 +1,18 @@
 package com.blackjack;
 
-import com.blackjack.game.BlackjackGame;
 import com.blackjack.game.BlackjackRoom;
 import com.blackjack.game.GameRules;
 import com.blackjack.model.Dealer;
-import com.blackjack.model.Player;
 import com.blackjack.stats.GameStats;
 import com.blackjack.stats.StatsManager;
 import com.blackjack.ui.ConsoleUI;
 import com.blackjack.user.PlayerProfile;
 import com.blackjack.user.UserManager;
 
+/**
+ * Main entry point for the Casino application.
+ * Handles user login, signup, and dashboard navigation.
+ */
 public class CasinoApp {
 
     private final ConsoleUI ui = new ConsoleUI();
@@ -21,6 +23,9 @@ public class CasinoApp {
     private final UserManager userManager = new UserManager();
     private PlayerProfile loggedInProfile = null;
 
+    /**
+     * Runs the main application loop.
+     */
     public void run() {
         boolean running = true;
         while (running) {
@@ -32,6 +37,9 @@ public class CasinoApp {
         }
     }
 
+    /**
+     * Shows the main dashboard after login.
+     */
     private void showDashboard() {
         boolean running = true;
         while (running) {
@@ -41,6 +49,10 @@ public class CasinoApp {
         }
     }
 
+    /**
+     * Shows the login/signup menu.
+     * @return true if user logs in or signs up, false if exits.
+     */
     private boolean showLoginMenu() {
         while (true) {
             System.out.println("\n=== 🎰 Welcome to Our Game Room / Casino! ===");
@@ -65,6 +77,10 @@ public class CasinoApp {
         }
     }
 
+    /**
+     * Handles user login.
+     * @return true if login successful, false otherwise.
+     */
     private boolean handleLogin() {
         ui.displayMessageWithoutLn("Enter username: ");
         String username = ui.readLine();
@@ -83,6 +99,10 @@ public class CasinoApp {
         }
     }
 
+    /**
+     * Handles user signup.
+     * @return true if signup successful, false otherwise.
+     */
     private boolean handleSignup() {
         ui.displayMessageWithoutLn("Choose a username: ");
         String username = ui.readLine();
@@ -106,6 +126,11 @@ public class CasinoApp {
         }
     }
 
+    /**
+     * Handles main menu choices.
+     * @param choice the menu option selected
+     * @return true to continue, false to logout or exit
+     */
     private boolean handleMenuChoice(int choice) {
         switch (choice) {
             case 1 -> {
@@ -143,8 +168,9 @@ public class CasinoApp {
         }
     }
 
-
-
+    /**
+     * Prints the welcome message and main menu.
+     */
     private void printWelcomeMessage() {
         System.out.println("\n=== 🎮 Welcome, " + loggedInProfile.getUsername() + "! ===\n");
         System.out.println("1. 🎲 Blackjack");

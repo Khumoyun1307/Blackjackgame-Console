@@ -7,6 +7,10 @@ import com.blackjack.stats.RoundSummary;
 import com.blackjack.ui.GameUI;
 import java.util.List;
 
+/**
+ * Manages a single round of Blackjack, including player and dealer turns,
+ * dealing cards, and evaluating results.
+ */
 public class RoundManager {
 
     private final Player player;
@@ -25,6 +29,9 @@ public class RoundManager {
         this.stats = stats;
     }
 
+    /**
+     * Plays a single round of Blackjack.
+     */
     public void playRound(){
 
         if (shoe.needsReshuffle()) {
@@ -111,6 +118,10 @@ public class RoundManager {
         ui.displayBalance(player.getBalance());
     }
 
+    /**
+     * Deals the initial cards to player and dealer.
+     * @param playerHand the player's hand to deal to
+     */
     public void dealInitialCards(Hand playerHand){
         Card playerCard1 = shoe.drawCard();
         Card dealerHiddenCard = shoe.drawCard();
@@ -129,6 +140,10 @@ public class RoundManager {
 
     }
 
+    /**
+     * Handles the player's turn for all hands.
+     * @return true if player exited early, false otherwise
+     */
     public boolean playerTurn(){
 
         List<Hand> playerHands = player.getHands();
@@ -260,6 +275,9 @@ public class RoundManager {
 
         return false;
     }
+    /**
+     * Handles the dealer's turn.
+     */
     public void dealerTurn(){
         Hand dealerHand = dealer.getHand();
         ui.displayMessage("\nDealer's turn...");
@@ -282,6 +300,9 @@ public class RoundManager {
         }
     }
 
+    /**
+     * Evaluates the results for all player hands.
+     */
     public void evaluateResults() {
         Hand dealerHand = dealer.getHand();
         List<Hand> playerHands = player.getHands();
@@ -330,6 +351,10 @@ public class RoundManager {
         RoundHistoryManager.saveRound(player.getName(), summaryLog);
     }
 
+    /**
+     * Checks for blackjack at the start of the round.
+     * @return true if round ends due to blackjack, false otherwise
+     */
     public boolean checkForBlackjack(){
         List<Hand> hands = player.getHands();
         if (hands.isEmpty()) return false;

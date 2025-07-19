@@ -2,15 +2,15 @@ package com.blackjack.game;
 
 import com.blackjack.model.Dealer;
 import com.blackjack.stats.GameStats;
-import com.blackjack.stats.RoundSummary;
 import com.blackjack.stats.StatsManager;
 import com.blackjack.ui.GameUI;
 import com.blackjack.user.PlayerProfile;
-import com.blackjack.stats.RoundHistoryManager;
 import com.blackjack.user.UserManager;
 
-import java.util.List;
-
+/**
+ * Represents the Blackjack room menu and session for a user.
+ * Handles menu navigation and launching Blackjack games.
+ */
 public class BlackjackRoom {
 
     private final GameUI ui;
@@ -29,6 +29,9 @@ public class BlackjackRoom {
         this.userManager = userManager;
     }
 
+    /**
+     * Launches the Blackjack room menu loop.
+     */
     public void launch() {
         boolean inBlackjackMenu = true;
 
@@ -64,6 +67,10 @@ public class BlackjackRoom {
         System.out.println("0. 🔙  Back to Casino");
     }
 
+    /**
+     * Gets the current Blackjack profile.
+     * @return the PlayerProfile for Blackjack
+     */
     public PlayerProfile getBlackjackProfile(){
         return this.profile;
     }

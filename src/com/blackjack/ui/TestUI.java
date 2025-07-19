@@ -1,11 +1,10 @@
 package com.blackjack.ui;
 
-import com.blackjack.model.Dealer;
-import com.blackjack.model.Hand;
 import com.blackjack.model.Move;
-import com.blackjack.model.Player;
 
-
+/**
+ * Test implementation of GameUI for automated testing.
+ */
 public class TestUI extends ConsoleUI {
     private boolean splitRequested = false;
 
@@ -51,4 +50,5 @@ public class TestUI extends ConsoleUI {
     public void showOutcome(String result) {
         System.out.println("[RESULT] " + result);
     }
+
 }

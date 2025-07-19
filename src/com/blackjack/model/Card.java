@@ -1,6 +1,9 @@
 package com.blackjack.model;
 
 
+/**
+ * Represents a playing card with a rank and suit.
+ */
 public class Card {
 
     public enum Suit {
@@ -26,19 +29,36 @@ public class Card {
     private Suit suit = null;
     private Rank rank = null;
 
+    /**
+     * Constructs a card with the given rank and suit.
+     * @param rank the card rank
+     * @param suit the card suit
+     */
     public Card(Rank rank, Suit suit){
         this.suit = suit;
         this.rank = rank;
     }
 
+    /**
+     * Gets the rank of the card.
+     * @return the rank
+     */
     public Rank getRank() {
         return rank;
     }
 
+    /**
+     * Gets the suit of the card.
+     * @return the suit
+     */
     public Suit getSuit() {
         return suit;
     }
 
+    /**
+     * Gets the value of the card for Blackjack.
+     * @return the card value
+     */
     public int getValue() {
         return rank.getValue();
     }
@@ -48,8 +68,10 @@ public class Card {
         return rank + " of " + suit;
     }
 
-    // Better display - later
-
+    /**
+     * Returns a short display string for the card.
+     * @return short display string
+     */
     public String getShortDisplay() {
         return String.format("[%s%s]", getDisplayRank(), getDisplaySuit());
     }
@@ -73,8 +95,10 @@ public class Card {
         };
     }
 
-    // Visually appealing display
-
+    /**
+     * Returns an ASCII art representation of the card.
+     * @return array of strings for ASCII art
+     */
     public String[] getAsciiDisplay() {
         String rankStr = switch (rank) {
             case TEN -> "10";
